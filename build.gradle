@@ -1,10 +1,10 @@
 buildscript {
   repositories {
     google()
-    jcenter()
+    mavenCentral()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.1'
+    classpath 'com.android.tools.build:gradle:4.2.0'
   }
 }
 
@@ -12,25 +12,23 @@ allprojects {
   repositories {
     google()
     mavenCentral()
-    jcenter()
   }
 }
 
 ext {
   minSdkVersion = 9
-  targetSdkVersion = 28
-  compileSdkVersion = 28
-  sourceCompatibilityVersion = JavaVersion.VERSION_1_7
-  targetCompatibilityVersion = JavaVersion.VERSION_1_7
+  targetSdkVersion = 30
+  compileSdkVersion = 30
+  sourceCompatibilityVersion = JavaVersion.VERSION_11
+  targetCompatibilityVersion = JavaVersion.VERSION_11
 }
 
 ext.deps = [
     // Compile dependencies
-    slf4j      : 'org.slf4j:slf4j-api:1.7.25',
-    timber     : 'com.jakewharton.timber:timber:4.7.1',
+    slf4j      : 'org.slf4j:slf4j-api:1.7.32',
+    timber     : 'com.jakewharton.timber:timber:5.0.1',
 
-    // Test dependencies      testImplementation 'org.junit.vintage:junit-vintage-engine:5.3.1'
-
+    // Test dependencies
     junit      : 'org.junit.vintage:junit-vintage-engine:5.3.1',
     festassert : 'org.easytesting:fest-assert-core:2.0M10',
     festandroid: 'com.squareup:fest-android:1.0.8',
