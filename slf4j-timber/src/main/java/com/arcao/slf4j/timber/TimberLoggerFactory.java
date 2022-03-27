@@ -1,12 +1,13 @@
 package com.arcao.slf4j.timber;
 
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+
+import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.slf4j.ILoggerFactory;
-import org.slf4j.Logger;
 
 /**
  * TimberLoggerFactory is an implementation of {@link ILoggerFactory} returning
@@ -41,6 +42,8 @@ public class TimberLoggerFactory implements ILoggerFactory {
     if (m.find()) {
       tag = m.replaceAll("");
     }
-    return tag.substring(tag.lastIndexOf('.') + 1);
+    return String.format(Locale.getDefault(), "%s:%d",
+            tag.substring(tag.lastIndexOf('.') + 1),
+            Thread.currentThread().getStackTrace()[15].getLineNumber());
   }
 }
